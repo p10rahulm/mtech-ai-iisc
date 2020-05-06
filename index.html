@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
+    <!--Most Important Scripts-->
+    <script type="text/javascript" src="assets/js/home.js"></script>
+    <script type="text/javascript" src="assets/js/ui-elements.js"></script>
+    <script type="text/javascript" src="assets/js/loadStudents.js"></script>
+
+    <!--Fonts-->
+    <!--    <link href='https://fonts.googleapis.com/css?family=Alegreya SC&display=swap' rel='stylesheet'>-->
+    <!--    <link href='https://fonts.googleapis.com/css?family=Lora&display=swap' rel='stylesheet'>-->
+    <!--    <link href='https://fonts.googleapis.com/css?family=Open Sans&display=swap' rel='stylesheet'>-->
+
+    <link rel="icon" type="image/png" href="assets/images/polyred_small.png">
+
+
+    <!--Social Media Tags-->
+    <meta property="og:title" content="Polynomials as an Algorithmic Paradigm">
+    <meta property="og:site_name" content="Polynomials as an Algorithmic Paradigm">
+    <meta property="og:image" itemprop="image"
+          content="http://storage.googleapis.com/poly-algo-theory/assets/images/polyred.png"/>
+    <meta property="og:updated_time" content="2020-04-30T18:19:00+05:30"/>
+    <meta property="og:description"
+          content="Indo-US research areasoration in computational statistics, high dimensional probability, game theory & convex optimization from an algorithmic lens">
+    <meta property="og:url" content="https://csa.iisc.ac.in">
+    <meta property="og:updated_time" content="1440432930"/>
+    <meta name="twitter:card" content="summary_large_image">
+
+
+    <!--Title-->
+    <title>Students of MTech AI 2020</title>
+</head>
+<body>
+<div class="container">
+    <div class="header container-element">
+        <div id="HeaderTitle" class="header-elem" onclick="clickHome()">
+            Artificial Intelligence, IISc 2020
+        </div>
+
+        <div id="navbar" class="header-elem">
+            <div id="navbar-Home" class="navbar-active navbar_button" onclick="clickNav(this.id);setHash(this.id)">
+                    Home
+            </div>
+            <div id="navbar-Students" class="navbar_button" onclick="clickNav(this.id);setAbstracts();setHash(this.id)">
+                    Students
+            </div>
+            <div id="navbar-Labs" class="navbar_button" onclick="clickNav(this.id);setHash(this.id)">
+                    Labs
+            </div>
+
+        </div>
+    </div>
+    <div class="mainer container-element">
+        <div id="Home" class="main active">
+
+
+        </div>
+        <div id="Students" class="main inactive">
+            <div class="home-header">2019-2021</div>
+            <div class="home-text" id="list-of-students">
+
+            </div>
+
+        </div>
+        <div id="Labs" class="main inactive">
+            <div class="home-header">Labs</div>
+            <div class="home-text">
+                <div class="home-textpara">
+                    TBA
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="footer container-element" onclick="readFile('content/')">
+        <div id="copyright">
+            &copy; 2020 <a href="https://www.iisc.ac.in" target="_blank">Indian Institute of Science, Bangalore</a>.
+            Website maintained by Rahul Madhavan
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/x-mathjax-config" defer>
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+
+</script>
+<script type="text/javascript" defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/javascript" async src="assets/js/swiped-events.min.js"></script>
+<script type="text/javascript" defer>
+    WebFontConfig = {
+        google: {
+            families: ['Lora', 'Open Sans', 'Alegreya SC']
+        }
+    };
+
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+</script>
+
+</body>
+</html>

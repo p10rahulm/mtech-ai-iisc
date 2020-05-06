@@ -1,0 +1,25 @@
+Algorithms||#
+Appproximation Algorithms||https://www.iisc.ac.in/wp-content/uploads/2017/12/E0249.pdf
+Data Structures||https://www.iisc.ac.in/wp-content/uploads/2018/01/E0251.pdf
+Online Algorithms||https://ece.iisc.ac.in/~aditya/E1245_F19.html
+Data Analytics||https://ece.iisc.ac.in/~rajeshs/E0259.htm
++++
+Applications||#
+Autonomous Navigation||https://cps.iisc.ac.in/courses-cp314-2020/autonomous-navigation/
+Computer Vision||http://www.ee.iisc.ac.in/people/faculty/venu/cv/index.html
+Language Understanding||https://www.iisc.ac.in/wp-content/uploads/2018/01/E1246.pdf
+Speech Recognition||http://www.ee.iisc.ac.in/people/faculty/prasantg/e9261_speech_jan2016.html
++++
+Machine Learning||#
+Deep Learning||https://www.csa.iisc.ac.in/academics/academics-courses-desc.php#E0250
+Reinforcement Learning||https://www.csa.iisc.ac.in/academics/academics-courses-desc.php#E1277
+Computational Optimization||https://www.iisc.ac.in/wp-content/uploads/2017/12/E0230.pdf
+Pattern Recognition and Neural Networks||https://www.iisc.ac.in/wp-content/uploads/2017/12/E1213.pdf
++++
+Mathematics||#
+Information Theory||https://ece.iisc.ac.in/~htyagi/course-E2201-2019.html
+Linear Algebra||https://sites.google.com/site/kunalnchaudhury/Teaching/cla-2019
+Probability & Statistics||https://www.iisc.ac.in/wp-content/uploads/2017/12/E1222.pdf
+Stochastic Approximation||https://ece.iisc.ac.in/~rajeshs/E1396.htm
+
+

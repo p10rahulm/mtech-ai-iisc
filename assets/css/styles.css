@@ -1,0 +1,391 @@
+body {
+    font-family: "Open Sans", Georgia,Cambria,Times,"Times New Roman",Serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    margin-bottom: 50px;
+    font-display: swap;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.container {
+    display: grid;
+    grid-template-rows: minmax(65px, auto) minmax(100px, auto) 65px [footer-end];
+    /*grid-template-columns: minmax(2vw,1fr) repeat(4, 1fr) minmax(2vw,1fr);*/
+    grid-template-columns: 2vw repeat(4, 1fr) 2vw;
+    grid-row-gap: min(4vw,40px);
+    grid-template-areas:
+            ". header header header header  ."
+            ". mainer mainer mainer mainer ."
+            ". footer footer footer footer .";
+    justify-items: center;
+}
+
+.container-element{
+    max-width: 1200px;
+    width: 100%;
+}
+.header {
+    top: 0px;
+    grid-area: header;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eceefb;
+    box-shadow: 5px 10px 18px #f0eef9;
+    position: sticky;
+    position: -webkit-sticky;
+    z-index: 100;
+
+
+}
+
+.header .header-elem{
+
+    padding: min(1.5vw,10px) 0;
+}
+
+.header #HeaderTitle {
+    /*text-align: center;*/
+    vertical-align: center;
+    padding-left: 10px;
+
+    font-family: "Lora",Georgia,Times,"Times New Roman",Serif;
+    color: #005999;
+    font-size: min(7vw,2em);
+    font-weight: bold;
+
+    line-height: 1;
+
+    flex-basis: 325px;
+    flex-grow: 1;
+    flex-shrink: 1
+}
+
+
+.header #navbar {
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+
+    flex-basis: 300px;
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+@media screen and (max-width: 720px) {
+    .header #HeaderTitle{
+        text-align: center;
+    }
+    .header #navbar {
+        justify-content: center;
+        flex-grow: 1;
+        flex-wrap: wrap;
+    }
+}
+
+.header #navbar .navbar_button {
+    padding: 10px min(2vw,10px);
+    font-family: "Alegreya SC","Felix Titling","Perpetua Titling MT",Georgia,Times,"Times New Roman",Serif;
+    font-size: max(1em, 12px);
+    color: #cc0000;
+}
+
+.header #navbar .navbar_button:hover {
+    text-decoration: underline;
+}
+
+.header #navbar .navbar_button a {
+    font-family: "Alegreya SC","Felix Titling","Perpetua Titling MT",Georgia,Times,"Times New Roman",Serif;
+    font-size: max(1em, 12px);
+    color: #cc0000;
+}
+
+.header #navbar .navbar-active {
+    box-shadow: 0px 8px 6px -4px #c39fff;
+}
+
+.mainer{
+    grid-area: mainer;
+}
+
+.mainer .inactive{
+    display: none;
+}
+
+.mainer .active{
+    display: block;
+}
+
+.mainer .home-header{
+    font-family: "Lora", Georgia,Cambria,Times,"Times New Roman",Serif;
+    /*color: rgba(0, 67, 204, 0.85);*/
+    color: rgba(167, 0, 0, 0.85);
+    font-size: max(16px,1.75em);
+    font-weight: bold;
+    padding-top: 25px;
+    padding-bottom: 10px;
+
+}
+.mainer .home-textpara{
+    color: rgb(90, 91, 106);
+    font-size: max(12px,1em);
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.mainer .home-textpara a {
+    color: #33aaff;
+}
+
+.mainer #Home #allFields{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+}
+.mainer #Home #allFields .field{
+    flex-basis: 400px;
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    border-radius: 25px;
+    /*border: 2px solid #5052b5;*/
+    /*border: 1px solid #33aaff;*/
+    /*border: 1px solid #c1c1c1;*/
+    border: 1px solid rgba(193, 193, 193, 0.48);
+    padding: 20px;
+    width: 300px;
+    height: auto;
+    margin: 5px;
+}
+.mainer #Home #allFields .field .field-name{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+}
+.mainer #Home #allFields .field .field-name .field-name-link{
+    font-family: "Open Sans", Georgia,Cambria,Times,"Times New Roman",Serif;
+    font-weight: bold;
+    color: #01487b;
+    /*color: #01487bcc;*/
+    font-size: max(1.1em,14px);
+}
+
+
+.mainer #Home #allFields .field .name{
+    display: inline;
+    color: #5f5f5f;
+    /*color: #697285b0;*/
+    font-weight: bold;
+}
+
+
+.mainer #Students .home-header{
+    margin: 20px 0 10px 0;
+}
+
+.mainer #Students .student-holder{
+    padding: 15px;
+    box-shadow: 5px 10px 18px #f4f4f4;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.mainer #Students .student-holder:hover {
+    transition: transform .75s;
+    transform: translateY(-10px);
+}
+
+
+.mainer #Students .student-holder .student-name {
+    font-weight: bold;
+    color: #005999;
+    line-height: 1.6;
+}
+
+.mainer #Students .student-holder .student-name:hover {
+    text-decoration: underline;
+}
+
+.mainer #Students .student-holder .student-lab-name{
+    font-weight: bold;
+    color: #f77e7e;
+    padding: 0 0 0.5em 0;
+    border-bottom: 1px solid rgba(0, 26, 250, 0.12);
+}
+
+.mainer #Students .student-holder .students-ml-interests {
+    padding-top: 0.5em;
+    line-height: 1.6;
+    font-style: italic;
+    color: #4eca91;
+}
+
+.mainer #Students .student-holder .seminar-location{
+    /*color: #777777;*/
+    /*color: #63beff;*/
+    color: #365d7999;
+    line-height: 1.6;
+}
+
+.mainer #Students .student-holder .students-hobbies{
+    /*color: #a70101a8;*/
+    color: #1e00c19e;
+    /*color: #4c3d9e9e;*/
+}
+
+
+.mainer #Students .student-holder .seminar-abstract-short{
+    color:#5f5f5f;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    border-top: 1px solid rgba(0, 26, 250, 0.12);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 1.75em;
+}
+.mainer #Students .student-holder .seminar-abstract{
+    /*color:#697285;*/
+    color:#5f5f5f;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+    border-top: 1px solid rgba(0, 26, 250, 0.12);
+}
+.mainer #Students .student-holder .seminar-abstract-seeless{
+    text-align: right;
+    /*font-weight: bold;*/
+    font-size: x-small;
+    color: #c1c1c1;
+}
+
+.mainer #Students .student-holder .seminar-abstract-seemore{
+    text-align: right;
+    /*font-weight: bold;*/
+    font-size: x-small;
+    color: #c1c1c1;
+}
+
+
+.mainer #Publications .publication-title{
+    font-weight: bold;
+}
+.mainer #Publications .publication-title a{
+    color: #005999;
+}
+.mainer #Publications .publication-authors{
+    color: #f77e7e;
+    font-weight: bold;
+}
+.mainer #Publications .publication-authors a{
+    /*color: #ff8888;*/
+    color: #f77e7e;
+}
+.mainer #Publications .publication-location{
+    font-style: italic;
+}
+
+.footer {
+    grid-area: footer;
+    border-top: 1px solid #eceefb;
+    box-shadow: 5px -10px 18px #f4f4f4;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-self: self-end;
+    padding: 10px 0;
+    margin-top: 25px;
+}
+
+.footer #copyright {
+    font-family: "Alegreya SC","Felix Titling","Perpetua Titling MT",Georgia,Times,"Times New Roman",Serif;
+    color: #005999;
+    text-align: center;
+}
+
+/*Seminar*/
+#seminarHome {
+    margin: 25px 0px;
+}
+
+#seminarHome .seminar-title{
+    text-align: center;
+    font-size: max(16px,2em);
+    font-weight: bold;
+    font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
+    color: rgba(158, 29, 29, 0.85);
+    color: #ab3c3cd9;
+}
+
+#seminarHome .seminar-speaker {
+    text-align: center;
+    font-style: italic;
+    font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
+    color: #093598;
+    border-bottom: 1px solid #ececec;
+    padding: 5px 0px 10px 0px;
+    font-weight: bold;
+}
+
+#seminarHome .seminar-dateloc{
+    padding: 15px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ececec;
+}
+
+#seminarHome .seminar-dateloc-child{
+    padding: 5px 0px;
+    /*color: #006544;*/
+    color: #00631e;
+    font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
+}
+
+#seminarHome .seminar-abstract {
+    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
+    padding: 15px 0px;
+    text-align: justify;
+    line-height: 1.6;
+
+}
+
+
+#seminarHome .seminar-notes {
+    margin-top: 25px;
+    padding-top: 10px;
+    border-top: 1px solid #ececec;
+    font-weight: 500;
+    font-size: max(11px, 0.9em);
+    color: #a2a2a2;
+    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+#seminarHome .seminar-paper {
+    padding-top: 5px;
+    font-weight: 500;
+    font-size: max(11px, 0.9em);
+    font-style: italic;
+    color: #a2a2a2;
+    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+#seminarHome .seminar-recording {
+    padding-top: 5px;
+    font-weight: 500;
+    font-size: max(11px, 0.9em);
+    font-style: italic;
+    color: #a2a2a2;
+    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
+}

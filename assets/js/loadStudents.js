@@ -1,0 +1,118 @@
+function readFile(contentUrl) {
+
+    dirName = contentUrl + 'students/';
+    allStudentsFile = "students.txt";
+    const allStudentsFileHttp = loadFileAsync(dirName + allStudentsFile);
+    allStudentsFileHttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            parseStudents(this.responseText);
+        }
+    }
+}
+
+function parseStudents(textFile) {
+    const trimStudentsFile = textFile.trim()
+    studentsArr = trimStudentsFile.split("\n");
+    studentsObjectArray = []
+    for (let i = 1; i < studentsArr.length; i++) {
+        studentsObjectArray.push(getStudentDetails(studentsArr[i]));
+    }
+    generateStudentsHTML(studentsObjectArray);
+    console.log("studentsObjectArray=", studentsObjectArray);
+}
+
+
+function getStudentDetails(studentLine) {
+    studentLine = studentLine.trim();
+    student = {};
+    studentDetailsArray = studentLine.split("||");
+    student.email = studentDetailsArray[0].trim();
+    student.name = studentDetailsArray[2].trim();
+    student.profName = studentDetailsArray[3].trim();
+    student.labName = studentDetailsArray[4].trim();
+    student.labWebsite = studentDetailsArray[5].trim();
+    student.mlInterests = studentDetailsArray[6].trim();
+    student.hobbies = studentDetailsArray[7].trim();
+    student.websiteLink = studentDetailsArray[8].trim();
+    student.photoLink = studentDetailsArray[9].trim();
+    console.log("student =", student);
+    return student
+}
+
+function generateStudentsHTML(studentsArray){
+    const allstudents = document.getElementById("list-of-students");
+    for(let i =0;i<studentsArray.length;i++){
+        student = studentsArray[i];
+        let studentDiv = document.createElement("div");
+        studentDiv.id = student.name.replace(/\s+/g, '-').toLowerCase();
+        studentDiv.className = "student-holder"
+        appendStudentDetailsinDiv(studentDiv,student);
+        allstudents.appendChild(studentDiv)
+
+    }
+}
+
+function appendStudentDetailsinDiv(studentDiv,student){
+    studentPhoto = document.createElement("img");
+    studentPhoto.src = student.photoLink
+
+
+    if(student.name){
+        studentName = document.createElement("div");
+        studentName.className = "student-name"
+
+        if(student.websiteLink){
+            studentNameLink = document.createElement("a");
+            studentNameLink.href = student.websiteLink;
+            studentNameLink.target = "_blank";
+            studentNameLink.className = "student-name-link";
+            studentNameLink.innerHTML = student.name;
+            studentName.appendChild(studentNameLink);
+        } else {
+            studentName.innerHTML = student.name
+        }
+        studentDiv.appendChild(studentName)
+    }
+    if(student.labName){
+        studentlabName = document.createElement("div");
+        studentlabName.className = "student-lab-name"
+
+        if(student.labWebsite){
+            studentLabLink = document.createElement("a");
+            studentLabLink.href = student.labWebsite;
+            studentLabLink.target = "_blank";
+            studentLabLink.className = "student-lab-name-link";
+            studentLabLink.innerHTML = student.labName
+            studentlabName.appendChild(studentLabLink);
+        } else {
+            studentlabName.innerHTML = student.labName
+        }
+        studentDiv.appendChild(studentlabName)
+    }
+    if(student.mlInterests){
+        studentMLInterests = document.createElement("div");
+        studentMLInterests.className = "students-ml-interests"
+        studentMLInterests.innerHTML = student.mlInterests
+        studentDiv.appendChild(studentMLInterests)
+    }
+    if(student.hobbies){
+        studentHobbies = document.createElement("div");
+        studentHobbies.className = "students-hobbies"
+
+        studentHobbiesLabel = document.createElement("span");
+        studentHobbiesLabel.className = "students-hobbies-label"
+        studentHobbiesLabel.classList.add("student-meta-label");
+        studentHobbiesLabel.innerHTML = "Hobbies: "
+
+        studentHobbiesContent = document.createElement("span");
+        studentHobbiesContent.className = "students-hobbies-content"
+        studentHobbiesContent.classList.add("student-meta-content");
+        studentHobbiesContent.innerHTML = student.hobbies;
+
+        studentHobbies.appendChild(studentHobbiesLabel);
+        studentHobbies.appendChild(studentHobbiesContent);
+        studentDiv.appendChild(studentHobbies);
+    }
+
+    return studentDiv;
+}

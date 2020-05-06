@@ -1,0 +1,21 @@
+AI has come to play an increasingly important role in our lives, in companies and in society. As the 21st century
+promises to be the century of AI, India seeks to be at the forefront of this knowledge. The all-pervasive nature
+of AI algorithms is likely to increasingly affect a variety of domains and we at MTech AI at IISc want to
+drive this change.
+~~~
+Our course seeks to build up competencies in AI research in India. The first-principles nature of the teaching here
+ensures that students don't simply apply tools and algorithms, but push forward the frontiers of knowledge in
+this fast-evolving field. The nature of the course gives a lot of importance to mathematical thinking and
+to theory, which enables the students to not just see what is working in AI, but
+also why many of the techniques work the way they do.
+~~~
+The AI course at IISc is jointly offered jointly by 4 different departments. Computer Science, Electrical Engineering,
+Communications Engineering and Electronic Systems Engineering. This enables students to seek out interest areas in
+speech, vision, robotics and even theoretical ML, which all require. IISc is of course the foremost research Institute
+in India, and offers a great degree of freedom for student to take up their research interests. With the capabilities,
+knowledge and skillsets gained here, we are sure the students passing out of this program will be at the
+cutting edge of AI in India.
+~~~
+This student page is generously hosted by the
+<a target="_blank" href="https://www.csa.iisc.ac.in/">CSA department</a> at
+<a target="_blank" href="https://www.iisc.ac.in/">IISc, Bangalore</a>
