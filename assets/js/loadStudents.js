@@ -187,7 +187,7 @@ function appendStudentDetailsinDiv(studentDiv,student,divLocation=0){
         studentArticle.innerHTML = student.article
         studentMetaHolder.appendChild(studentArticle)
     }
-    // generateDownloads(student);
+    generateDownloads(student);
     return studentDiv;
 }
 function generateDownloads(student){
