@@ -123,7 +123,7 @@ function appendStudentDetailsinDiv(studentDiv,student){
         studentHobbiesLabel.innerHTML = "Hobbies: "
 
         studentHobbiesContent = document.createElement("span");
-        studentHobbiesContent.className = "students-hobbies-content"
+        studentHobbiesContent.className = "students-hobbies-content";
         studentHobbiesContent.classList.add("student-meta-content");
         studentHobbiesContent.innerHTML = student.hobbies;
 
@@ -131,6 +131,34 @@ function appendStudentDetailsinDiv(studentDiv,student){
         studentHobbies.appendChild(studentHobbiesContent);
         studentMetaHolder.appendChild(studentHobbies);
     }
-
+    docName = student.name.replace(/\s+/g, '-').toLowerCase() + ".md";
+    docText = generateDocument(student);
+    console.log("docName=",docName);
+    console.log("docText=",docText);
+    download(docName,docText);
     return studentDiv;
+}
+
+function generateDocument(studentObj){
+    let doc = "";
+    doc = doc.concat("+++\n");
+    for (let [key, value] of Object.entries(studentObj)) {
+        doc = doc.concat(key," = \"",value,"\"\n");
+    }
+    doc = doc.concat("+++\n\n");
+    doc = doc.concat("This is some placeholder text. Please fill your required text here. You may use html tags");
+    return doc;
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }
