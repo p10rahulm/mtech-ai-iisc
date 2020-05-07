@@ -2,7 +2,7 @@
 email = "mrahul@IISc.ac.in"
 name = "Rahul Madhavan"
 profName = "Prof. Siddharth Barman"
-labName = "AGT and Approximation Algos Lab"
+labName = "Algorithmic Game Theory<br>and Approximation Algos Lab"
 labWebsite = "https://www.csa.iisc.ac.in/~barman/"
 mlInterests = "Theoretical ML, Capsule Nets, Computational Neuroscience, Learning Theory, Fairness in ML"
 hobbies = "Running, reading, rock climbing"
