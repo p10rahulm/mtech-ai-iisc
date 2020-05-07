@@ -131,14 +131,16 @@ function appendStudentDetailsinDiv(studentDiv,student){
         studentHobbies.appendChild(studentHobbiesContent);
         studentMetaHolder.appendChild(studentHobbies);
     }
+    // generateDownloads(student);
+    return studentDiv;
+}
+function generateDownloads(student){
     docName = student.name.replace(/\s+/g, '-').toLowerCase() + ".md";
     docText = generateDocument(student);
     console.log("docName=",docName);
     console.log("docText=",docText);
     download(docName,docText);
-    return studentDiv;
 }
-
 function generateDocument(studentObj){
     let doc = "";
     doc = doc.concat("+++\n");
