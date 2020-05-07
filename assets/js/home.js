@@ -69,7 +69,7 @@ function loadFileAsync(filePath) {
 function clickHome(){
 
     const homeUrl = window.location.origin + window.location.pathname;
-    const homeTitle = "Polynomials as an Algorithmic Paradigm";
+    const homeTitle = "Students of MTech AI 2020";
 
     let contentUrl;
     const indexOfIndex = window.location.pathname.indexOf("index.html");
@@ -232,5 +232,5 @@ function generateHomeHTML(dirName){
         }
     }
     //set document title
-    document.title = "Polynomials as an Algorithmic Paradigm"
+    document.title = "Students of MTech AI 2020"
 }

@@ -1,10 +1,12 @@
-function readFile(contentUrl) {
+
+function loadStudents(contentUrl) {
 
     dirName = contentUrl + 'students/';
     allStudentsFile = "students.txt";
     const allStudentsFileHttp = loadFileAsync(dirName + allStudentsFile);
     allStudentsFileHttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            removeChildren(document.getElementById("list-of-students"));
             parseStudents(this.responseText);
         }
     }
@@ -18,7 +20,6 @@ function parseStudents(textFile) {
         studentsObjectArray.push(getStudentDetails(studentsArr[i]));
     }
     generateStudentsHTML(studentsObjectArray);
-    console.log("studentsObjectArray=", studentsObjectArray);
 }
 
 
@@ -35,7 +36,6 @@ function getStudentDetails(studentLine) {
     student.hobbies = studentDetailsArray[7].trim();
     student.websiteLink = studentDetailsArray[8].trim();
     student.photoLink = studentDetailsArray[9].trim();
-    console.log("student =", student);
     return student
 }
 
@@ -53,8 +53,22 @@ function generateStudentsHTML(studentsArray){
 }
 
 function appendStudentDetailsinDiv(studentDiv,student){
+    studentPhotoHolder = document.createElement("div");
+    studentPhotoHolder.className = "student-photo-holder";
+    studentMetaHolder = document.createElement("div");
+    studentMetaHolder.className = "student-meta-holder";
+    studentDiv.appendChild(studentPhotoHolder);
+    studentDiv.appendChild(studentMetaHolder);
+
     studentPhoto = document.createElement("img");
-    studentPhoto.src = student.photoLink
+    if(student.photoLink){
+        studentPhoto.src = student.photoLink
+    } else {
+        studentPhoto.src = "assets/images/placeholder_img.png"
+    }
+    studentPhoto.className = "student-photo";
+    studentPhotoHolder.appendChild(studentPhoto);
+
 
 
     if(student.name){
@@ -71,7 +85,7 @@ function appendStudentDetailsinDiv(studentDiv,student){
         } else {
             studentName.innerHTML = student.name
         }
-        studentDiv.appendChild(studentName)
+        studentMetaHolder.appendChild(studentName)
     }
     if(student.labName){
         studentlabName = document.createElement("div");
@@ -87,13 +101,13 @@ function appendStudentDetailsinDiv(studentDiv,student){
         } else {
             studentlabName.innerHTML = student.labName
         }
-        studentDiv.appendChild(studentlabName)
+        studentMetaHolder.appendChild(studentlabName)
     }
     if(student.mlInterests){
         studentMLInterests = document.createElement("div");
         studentMLInterests.className = "students-ml-interests"
         studentMLInterests.innerHTML = student.mlInterests
-        studentDiv.appendChild(studentMLInterests)
+        studentMetaHolder.appendChild(studentMLInterests)
     }
     if(student.hobbies){
         studentHobbies = document.createElement("div");
@@ -111,7 +125,7 @@ function appendStudentDetailsinDiv(studentDiv,student){
 
         studentHobbies.appendChild(studentHobbiesLabel);
         studentHobbies.appendChild(studentHobbiesContent);
-        studentDiv.appendChild(studentHobbies);
+        studentMetaHolder.appendChild(studentHobbies);
     }
 
     return studentDiv;
