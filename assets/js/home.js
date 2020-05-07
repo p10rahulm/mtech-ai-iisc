@@ -139,7 +139,7 @@ function generateStudentHTML(studentHTTP,studentName){
     appendStudentDetailsinDiv(studentHome,student,1)
     // [student, studentDate,studentName] = createStudent(studentContents, studentName + ".md",1);
     //set document title
-    document.title = student.name
+    document.title = student.name + " | MTech AI IISc"
 }
 
 function loadIntroText(introResponse, parentDiv){
