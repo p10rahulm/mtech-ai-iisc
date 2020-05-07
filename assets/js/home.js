@@ -160,7 +160,7 @@ function loadstudyAreas(areasResponse,parentDiv){
     //studyAreas Heading
     const areasHeading = document.createElement("div");
     areasHeading.className = "home-header";
-    areasHeading.innerHTML = "AI: A Wider Perspective";
+    areasHeading.innerHTML = "AI: Extensive scope, broader perspectives";
     areasHeading.id = "study-areas-heading"
     parentDiv.appendChild(areasHeading);
 

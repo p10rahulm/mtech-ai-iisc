@@ -57,6 +57,9 @@ a:hover {
     padding: min(1.5vw,10px) 0;
 }
 
+
+
+
 .header #HeaderTitle {
     /*text-align: center;*/
     vertical-align: center;
@@ -64,16 +67,31 @@ a:hover {
 
     font-family: "Lora",Georgia,Times,"Times New Roman",Serif;
     color: #005999;
-    font-size: min(7vw,2em);
+    font-size: min(8vw,1.8em);
     font-weight: bold;
 
     line-height: 1;
 
-    flex-basis: 325px;
+    flex-basis: 370px;
     flex-grow: 1;
-    flex-shrink: 1
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
 }
 
+.header #logo-image{
+    height: min(60px,20vw);
+    width: min(60px,20vw);
+    padding: 0px 15px 0px 0px;
+    flex-basis:70px;
+    flex-shrink: 0.25;
+    flex-grow: 0;
+}
+.header #HeaderTitle-text{
+    flex-basis:300px;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
 
 .header #navbar {
     text-align: center;
@@ -84,14 +102,23 @@ a:hover {
     flex-grow: 0;
     flex-shrink: 1;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 725px) {
+    .header #logo-image{
+        display: none;
+    }
     .header #HeaderTitle{
+        justify-content: center;
+        padding-bottom: 0;
+        text-align: center;
+    }
+    .header #HeaderTitle-text{
         text-align: center;
     }
     .header #navbar {
         justify-content: center;
         flex-grow: 1;
         flex-wrap: wrap;
+        padding-bottom: 0;
     }
 }
 
