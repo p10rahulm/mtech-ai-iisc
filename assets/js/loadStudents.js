@@ -82,9 +82,10 @@ function appendStudentDetailsinDiv(studentDiv,student,divLocation=0){
 
     studentPhoto = document.createElement("img");
     if(student.photoLink){
-        studentPhoto.src = student.photoLink
-        studentPhoto.alt = student.name;
+        studentPhoto.src = student.photoLink;
+        studentPhoto.setAttribute("alt", student.name);
         studentPhoto.setAttribute("loading", "lazy");
+        studentPhoto.setAttribute("lowsrc", "assets/images/placeholder_img.png");
         // studentPhoto.width = "150"
         // studentPhoto.height = "175"
     } else {
