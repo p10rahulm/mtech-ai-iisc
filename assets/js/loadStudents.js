@@ -1,5 +1,5 @@
 
-function loadStudents(contentUrl) {
+function loadStudentsSingleFile(contentUrl) {
 
     dirName = contentUrl + 'students/';
     allStudentsFile = "students.txt";
@@ -46,27 +46,47 @@ function generateStudentsHTML(studentsArray){
         let studentDiv = document.createElement("div");
         studentDiv.id = student.name.replace(/\s+/g, '-').toLowerCase();
         studentDiv.className = "student-holder"
-        appendStudentDetailsinDiv(studentDiv,student);
+        appendStudentDetailsinDiv(studentDiv,student,0);
         allstudents.appendChild(studentDiv)
 
     }
 }
 
-function appendStudentDetailsinDiv(studentDiv,student){
+function appendStudentDetailsinDiv(studentDiv,student,divLocation=0){
+
     studentPhotoHolder = document.createElement("div");
     studentPhotoHolder.className = "student-photo-holder";
     studentMetaHolder = document.createElement("div");
     studentMetaHolder.className = "student-meta-holder";
-    studentDiv.appendChild(studentPhotoHolder);
-    studentDiv.appendChild(studentMetaHolder);
+    if(divLocation==1){
+        studentCard = document.createElement("div");
+        studentCard.className = "student-card";
+        studentCard.appendChild(studentPhotoHolder);
+        studentCard.appendChild(studentMetaHolder);
+        studentDiv.appendChild(studentCard);
+    } else {
+        studentDiv.appendChild(studentPhotoHolder);
+        studentDiv.appendChild(studentMetaHolder);
+    }
+
+
+    if (divLocation == 0) {
+        const studentName = student.name;
+        const baseUrl = window.location.origin + window.location.pathname;
+        let studentUrl = baseUrl + "?student=" + studentName.replace(/\s+/g, '-').toLowerCase();
+        studentDiv.onclick = function () {
+            clickStudent(studentName.valueOf(), studentUrl.valueOf())
+        };
+    }
+
 
     studentPhoto = document.createElement("img");
     if(student.photoLink){
         studentPhoto.src = student.photoLink
         studentPhoto.alt = student.name;
         studentPhoto.setAttribute("loading", "lazy");
-        studentPhoto.width = "150"
-        studentPhoto.height = "175"
+        // studentPhoto.width = "150"
+        // studentPhoto.height = "175"
     } else {
         studentPhoto.src = "assets/images/placeholder_img.png"
     }
@@ -107,29 +127,65 @@ function appendStudentDetailsinDiv(studentDiv,student){
         }
         studentMetaHolder.appendChild(studentlabName)
     }
+    if(divLocation==1 && student.profName){
+        studentProfName = document.createElement("div");
+        studentProfName.className = "student-prof-name"
+
+        studentProfNameContent = document.createElement("div");
+        studentProfNameContent.className = "student-prof-name-content";
+        studentProfNameContent.classList.add("student-meta-content");
+        studentProfNameContent.innerHTML = student.profName;
+
+
+        studentProfName.appendChild(studentProfNameContent);
+
+
+        studentMetaHolder.appendChild(studentProfName)
+    }
     if(student.mlInterests){
-        studentMLInterests = document.createElement("div");
-        studentMLInterests.className = "students-ml-interests"
-        studentMLInterests.innerHTML = student.mlInterests
-        studentMetaHolder.appendChild(studentMLInterests)
+        studentAcadInterests = document.createElement("div");
+        studentAcadInterests.className = "student-acad-interests"
+
+        studentAcadInterestsLabel = document.createElement("div");
+        studentAcadInterestsLabel.className = "student-acad-interests-label"
+        studentAcadInterestsLabel.classList.add("student-meta-label");
+        studentAcadInterestsLabel.innerHTML = "Academic Interests: "
+
+        studentAcadInterestsContent = document.createElement("div");
+        studentAcadInterestsContent.className = "student-acad-interests-content";
+        studentAcadInterestsContent.classList.add("student-meta-content");
+        studentAcadInterestsContent.innerHTML = student.mlInterests;
+
+        studentAcadInterests.appendChild(studentAcadInterestsLabel);
+        studentAcadInterests.appendChild(studentAcadInterestsContent);
+
+
+        studentMetaHolder.appendChild(studentAcadInterests)
     }
     if(student.hobbies){
         studentHobbies = document.createElement("div");
-        studentHobbies.className = "students-hobbies"
+        studentHobbies.className = "student-hobbies"
 
-        studentHobbiesLabel = document.createElement("span");
-        studentHobbiesLabel.className = "students-hobbies-label"
+        studentHobbiesLabel = document.createElement("div");
+        studentHobbiesLabel.className = "student-hobbies-label"
         studentHobbiesLabel.classList.add("student-meta-label");
         studentHobbiesLabel.innerHTML = "Hobbies: "
 
-        studentHobbiesContent = document.createElement("span");
-        studentHobbiesContent.className = "students-hobbies-content";
+        studentHobbiesContent = document.createElement("div");
+        studentHobbiesContent.className = "student-hobbies-content";
         studentHobbiesContent.classList.add("student-meta-content");
         studentHobbiesContent.innerHTML = student.hobbies;
 
         studentHobbies.appendChild(studentHobbiesLabel);
         studentHobbies.appendChild(studentHobbiesContent);
         studentMetaHolder.appendChild(studentHobbies);
+    }
+
+    if(student.article &&student.article!="This is some placeholder text. Please fill your required text here. You may use html tags" ){
+        studentArticle = document.createElement("div");
+        studentArticle.className = "student-writeup-short"
+        studentArticle.innerHTML = student.article
+        studentMetaHolder.appendChild(studentArticle)
     }
     // generateDownloads(student);
     return studentDiv;

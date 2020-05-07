@@ -16,7 +16,7 @@ function start() {
     //Load Home
     loadHome(contentUrl);
     //Load Students
-    // loadStudents(contentUrl,"files.list");
+    loadStudents(contentUrl,"files.list");
     //Load part of page thats relevant
     loadHash();
     //Load Swipes
@@ -85,7 +85,7 @@ function clickHome(){
     loadHome(contentUrl);
 }
 
-function clickTalk(talkTitle, talkUrl){
+function clickStudent(talkTitle, talkUrl){
 
     let contentUrl;
     const indexOfIndex = window.location.pathname.indexOf("index.html");
@@ -100,20 +100,6 @@ function clickTalk(talkTitle, talkUrl){
     loadHome(contentUrl);
 }
 
-function generateTalkHTML(talkHTTP,talkName){
-    const seminarContents = talkHTTP.responseText;
-    [seminar, seminarDate,seminarName] = createTalk(seminarContents, talkName + ".md",1);
-    const seminarHome = document.createElement("div");
-    seminarHome.id = "seminarHome";
-    seminarHome.className = "home-text";
-    seminarHome.appendChild(seminar);
-    const homeDiv = document.getElementById("Home");
-    homeDiv.appendChild(seminarHome);
-    //set document title
-    document.title = seminarName
-    //reset Mathjax typesetting
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub,seminarHome]);
-}
 
 function removeChildren(someDiv){
     while (someDiv.hasChildNodes()) {
@@ -126,20 +112,35 @@ function loadHome(contentUrl) {
     removeChildren(document.getElementById("Home"));
     clickNav("navbar-Home");
     query = getSearchString();
-    const talkIndex = query.indexOf("talk=")
-    if(talkIndex==-1){
+    const studentIndex = query.indexOf("student=")
+    if(studentIndex==-1){
         generateHomeHTML(contentUrl);
     } else {
-        let talkName = query.substr(talkIndex+5);
-        const talkHttp = loadFileAsync(contentUrl+"students/" + talkName + ".md");
-        talkHttp.onreadystatechange = function () {
+        let studentName = query.substr(studentIndex+8);
+        const studentHttp = loadFileAsync(contentUrl+"students/" + studentName + ".md");
+        studentHttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                generateTalkHTML(this,talkName);
+                generateStudentHTML(this,studentName);
             }
         }
     }
 }
 function getSearchString(){return window.location.search;}
+
+function generateStudentHTML(studentHTTP,studentName){
+    const studentContents = studentHTTP.responseText;
+    student = parseContents(studentContents);
+    console.log("student = ",student);
+    const studentHome = document.createElement("div");
+    studentHome.id = "studentHome";
+    studentHome.className = "home-text";
+    const homeDiv = document.getElementById("Home");
+    homeDiv.appendChild(studentHome);
+    appendStudentDetailsinDiv(studentHome,student,1)
+    // [student, studentDate,studentName] = createStudent(studentContents, studentName + ".md",1);
+    //set document title
+    document.title = student.name
+}
 
 function loadIntroText(introResponse, parentDiv){
     //Introduction

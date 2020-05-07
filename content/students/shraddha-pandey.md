@@ -7,7 +7,7 @@ labWebsite = "http://www.ee.iisc.ac.in/faculty/kunal/"
 mlInterests = "Deep Learning, Optimization, Computer Vision"
 hobbies = "Music( Guitar), Reading, Drawing"
 websiteLink = "https://www.linkedin.com/in/shraddha-pandey-b42b40169"
-photoLink = "https://ece.iisc.ac.in/administrator/components/com_students/students/303ef35703779ee46835a7c1c0a94e19-Shraddha-Pandey.jpg"
+photoLink = "https://media-exp1.licdn.com/dms/image/C4E03AQEjRjbsDB4W7Q/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=xBYlyMTAmpwsufqcAvj4sGlTlsca99kgBFoRgCr0Vpc"
 +++
 
 This is some placeholder text. Please fill your required text here. You may use html tags

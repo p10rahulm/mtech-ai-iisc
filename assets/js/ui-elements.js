@@ -40,20 +40,20 @@ function setHash(clicked_id){
 }
 
 function seeMoreAbstract(element) {
-    if (element.classList.contains("seminar-abstract-short") && isOverflown(element)) {
-        element.classList.remove("seminar-abstract-short");
-        element.classList.add("seminar-abstract");
+    if (element.classList.contains("student-writeup-short") && isOverflown(element)) {
+        element.classList.remove("student-writeup-short");
+        element.classList.add("student-writeup");
 
 
         //create a see less token
         const newdiv = document.createElement("div");
         newdiv.innerHTML = "...See Less<i class=\"arrow up\"></i>";
-        newdiv.className = "seminar-abstract-seeless";
+        newdiv.className = "student-writeup-seeless";
         newdiv.setAttribute("onClick", "seeLessAbstract(this)");
         // newdiv.onclick = "seeLessAbstract(newdiv)";
         element.parentElement.appendChild(newdiv);
 
-        seemore = element.parentElement.getElementsByClassName("seminar-abstract-seemore")[0];
+        seemore = element.parentElement.getElementsByClassName("student-writeup-seemore")[0];
         seemore.parentElement.removeChild(seemore);
 
 
@@ -62,16 +62,16 @@ function seeMoreAbstract(element) {
 
 
 function setAbstracts() {
-    abstracts = document.getElementsByClassName("seminar-abstract-short");
+    abstracts = document.getElementsByClassName("student-writeup-short");
     for (let i = 0; i < abstracts.length; i++) {
         let abstract = abstracts.item(i);
-        let abstractDone = abstract.parentElement.getElementsByClassName("seminar-abstract-seemore").length;
+        let abstractDone = abstract.parentElement.getElementsByClassName("student-writeup-seemore").length;
         if (isOverflown(abstract) && !abstractDone) {
             //create a see less token
             const newdiv = document.createElement("div");
             newdiv.innerHTML = "...See More<i class=\"arrow down\"></i>";
-            newdiv.className = "seminar-abstract-seemore"
-            newdiv.setAttribute("onClick", "seeMoreAbstract(this.parentElement.getElementsByClassName('seminar-abstract-short')[0])");
+            newdiv.className = "student-writeup-seemore"
+            newdiv.setAttribute("onClick", "seeMoreAbstract(this.parentElement.getElementsByClassName('student-writeup-short')[0])");
             abstract.parentElement.appendChild(newdiv);
         }
     }
@@ -82,13 +82,13 @@ function setAbstracts() {
 
 
 function seeLessAbstract(element) {
-    const abstract = element.parentElement.getElementsByClassName("seminar-abstract").item(0);
-    abstract.classList.remove("seminar-abstract");
-    abstract.classList.add("seminar-abstract-short");
+    const abstract = element.parentElement.getElementsByClassName("student-writeup").item(0);
+    abstract.classList.remove("student-writeup");
+    abstract.classList.add("student-writeup-short");
     const newdiv = document.createElement("div");
     newdiv.innerHTML = "...See More<i class=\"arrow down\"></i>";
-    newdiv.className = "seminar-abstract-seemore"
-    newdiv.setAttribute("onClick", "seeMoreAbstract(this.parentElement.getElementsByClassName('seminar-abstract-short')[0])");
+    newdiv.className = "student-writeup-seemore"
+    newdiv.setAttribute("onClick", "seeMoreAbstract(this.parentElement.getElementsByClassName('student-writeup-short')[0])");
     abstract.parentElement.appendChild(newdiv);
     element.parentNode.removeChild(element);
 }

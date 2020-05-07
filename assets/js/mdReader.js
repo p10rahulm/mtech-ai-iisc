@@ -7,27 +7,29 @@ function loadStudents(contentUrl, filesListPath) {
             const filesListRaw = this.responseText.trim();
             const filenames = filesListRaw.split('\n');
             for (let i = 1; i < filenames.length; i++) {
-                let talkFile = filenames[i];
-                let talkhttp = loadFileAsync(dirName + talkFile);
+                let studentFile = filenames[i];
+                let studenthttp = loadFileAsync(dirName + studentFile);
                 //create holders so that it does not go out of place in async
-                talkFileName = talkFile.slice(0, -3);
-                talkHolder = document.createElement("div");
-                talkHolder.id = talkFileName
-                document.getElementById("list-of-students").appendChild(talkHolder);
+                const studentFileName = studentFile.slice(0, -3);
+                const studentHolder = document.createElement("div");
+                studentHolder.className = "student-holder"
+                studentHolder.id = studentFileName
+                document.getElementById("list-of-students").appendChild(studentHolder);
 
-                talkhttp.onreadystatechange = function (talkFileName) {
-                    //We need current value of talkFileName, so creating an outer function that returns an inner function
+                studenthttp.onreadystatechange = function (studentFileName) {
+                    //We need current value of studentFileName, so creating an outer function that returns an inner function
                     innerFunc = function (event) {
                         if (this.readyState == 4 && this.status == 200) {
-                            [seminar, seminarDate, seminarName] = createTalk(this.responseText, talkFile, 0);
-                            document.getElementById(talkFileName.valueOf()).appendChild(seminar);
-                            //reset Mathjax typesetting
-                            MathJax.Hub.Queue(["Typeset", MathJax.Hub, seminar]);
-                            setAbstractsforDiv(seminar.getElementsByClassName('seminar-abstract-short')[0]);
+                            student = parseContents(this.responseText);
+                            appendStudentDetailsinDiv(studentHolder,student,0);
+                            const articleDiv = studentHolder.getElementsByClassName('student-writeup-short')[0]
+                            if(articleDiv){
+                                setAbstractsforDiv();
+                            }
                         }
                     }
                     return innerFunc;
-                }(talkFileName);
+                }(studentFileName);
             }
         }
     }
@@ -35,13 +37,13 @@ function loadStudents(contentUrl, filesListPath) {
 
 
 function setAbstractsforDiv(abstractdiv) {
-    const abstractDone = abstractdiv.parentElement.getElementsByClassName("seminar-abstract-seemore").length;
+    const abstractDone = abstractdiv.parentElement.getElementsByClassName("student-writeup-seemore").length;
     if (isOverflown(abstractdiv) && !abstractDone) {
         //create a see less token
         const newdiv = document.createElement("div");
         newdiv.innerHTML = "...See More<i class=\"arrow down\"></i>";
-        newdiv.className = "seminar-abstract-seemore"
-        newdiv.setAttribute("onClick", "seeMoreAbstract(this.parentElement.getElementsByClassName('seminar-abstract-short')[0])");
+        newdiv.className = "student-writeup-seemore"
+        newdiv.setAttribute("onClick", "seeMoreAbstract(this.parentElement.getElementsByClassName('student-writeup-short')[0])");
         abstractdiv.parentElement.appendChild(newdiv);
     }
 }
@@ -57,20 +59,15 @@ function createTalk(talkContents, talkFile, divLocation) {
     let seminarDate = new Date();
     seminar.className = "seminar";
     if (talkKV.title) {
-        let metadiv;
+        let metadiv = document.createElement("div");
         if (divLocation == 0) {
-            metadiv = document.createElement("div");
             const talkName = talkFile.slice(0, talkFile.indexOf("."))
             metadiv.id = talkName;
             const baseUrl = window.location.origin + window.location.pathname;
             let talkUrl = baseUrl + "?talk=" + talkName;
             metadiv.onclick = function () {
-                clickTalk(talkKV.title.valueOf(), talkUrl.valueOf())
+                clickStudent(talkKV.title.valueOf(), talkUrl.valueOf())
             };
-
-
-        } else {
-            metadiv = document.createElement("div");
         }
         metadiv.innerHTML = talkKV.title;
         metadiv.className = "seminar-title"
@@ -117,11 +114,11 @@ function createTalk(talkContents, talkFile, divLocation) {
         const metadiv = document.createElement("div");
         metadiv.innerHTML = talkKV.article;
         if (divLocation == 0) {
-            metadiv.className = "seminar-abstract-short"
+            metadiv.className = "student-writeup-short"
         } else if (divLocation == 1) {
-            metadiv.className = "seminar-abstract"
+            metadiv.className = "student-writeup"
         } else {
-            metadiv.className = "seminar-abstract-short"
+            metadiv.className = "student-writeup-short"
         }
 
         metadiv.setAttribute("onClick", "seeMoreAbstract(this)")
@@ -201,7 +198,7 @@ function parseContents(contents) {
 
     }
 
-    contentKV.article = contentLines.slice(lineNo).join('\n');
+    contentKV.article = contentLines.slice(lineNo).join('\n').trim();
     return contentKV;
 
 

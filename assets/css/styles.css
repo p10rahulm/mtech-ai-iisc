@@ -256,6 +256,23 @@ a:hover {
     flex-grow: 1;
     flex-shrink: 1;
 }
+
+.mainer #Students .student-meta-label{
+    display: inline;
+    font-weight: bold;
+}
+
+.mainer #Students .student-meta-content{
+    display: inline;
+}
+
+.mainer #Students .student-holder .student-lab-name{
+    font-weight: bold;
+    color: #f77e7e;
+    padding: 0 0 0.5em 0;
+    border-bottom: 1px solid rgba(0, 26, 250, 0.12);
+}
+
 .mainer #Students .student-holder .student-name {
     font-weight: bold;
     color: #005999;
@@ -273,28 +290,21 @@ a:hover {
     border-bottom: 1px solid rgba(0, 26, 250, 0.12);
 }
 
-.mainer #Students .student-holder .students-ml-interests {
+
+.mainer #Students .student-holder .student-acad-interests {
     padding-top: 0.5em;
     line-height: 1.6;
     font-style: italic;
     color: #4eca91;
 }
-
-.mainer #Students .student-holder .seminar-location{
-    /*color: #777777;*/
-    /*color: #63beff;*/
-    color: #365d7999;
-    line-height: 1.6;
-}
-
-.mainer #Students .student-holder .students-hobbies{
+.mainer #Students .student-holder .student-hobbies{
     /*color: #a70101a8;*/
     color: #1e00c19e;
     /*color: #4c3d9e9e;*/
 }
 
 
-.mainer #Students .student-holder .seminar-abstract-short{
+.mainer #Students .student-holder .student-writeup-short{
     color:#5f5f5f;
     margin-top: 0.5em;
     padding-top: 0.5em;
@@ -304,21 +314,21 @@ a:hover {
     overflow: hidden;
     height: 1.75em;
 }
-.mainer #Students .student-holder .seminar-abstract{
+.mainer #Students .student-holder .student-writeup{
     /*color:#697285;*/
     color:#5f5f5f;
     margin-top: 0.5em;
     padding-top: 0.5em;
     border-top: 1px solid rgba(0, 26, 250, 0.12);
 }
-.mainer #Students .student-holder .seminar-abstract-seeless{
+.mainer #Students .student-holder .student-writeup-seeless{
     text-align: right;
     /*font-weight: bold;*/
     font-size: x-small;
     color: #c1c1c1;
 }
 
-.mainer #Students .student-holder .seminar-abstract-seemore{
+.mainer #Students .student-holder .student-writeup-seemore{
     text-align: right;
     /*font-weight: bold;*/
     font-size: x-small;
@@ -363,76 +373,95 @@ a:hover {
 }
 
 /*Seminar*/
-#seminarHome {
+#studentHome {
     margin: 25px 0px;
+    display: flex;
+    justify-content: center;
+}
+#studentHome .student-card{
+    flex-basis: 400px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    padding: 40px;
+    border-radius: 40px;
+    /*box-shadow: 15px 15px 30px #ececec;*/
+    box-shadow: 15px 15px 30px #1c5b9c59;
+    border: 1px solid #4ca26a26;
+}
+#studentHome .student-photo-holder {
+    display: flex;
+    justify-content: center;
+}
+#studentHome .student-photo{
+    width: min(300px,90vw);
+    height: min(300px,90vw);
+    border-radius: 50%;
 }
 
-#seminarHome .seminar-title{
+#studentHome .student-meta-label{
+    display: inline;
+    font-weight: bold;
+}
+
+#studentHome .student-meta-content{
+    display: inline;
+}
+
+#studentHome .student-name{
     text-align: center;
     font-size: max(16px,2em);
     font-weight: bold;
     font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
-    color: rgba(158, 29, 29, 0.85);
+    /*color: rgba(158, 29, 29, 0.85);*/
     color: #ab3c3cd9;
+    border-bottom: 1px solid #ececec;
 }
 
-#seminarHome .seminar-speaker {
+#studentHome .student-lab-name {
+    text-align: center;
+    font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
+    font-size: max(14px,1.25em);
+    /*color: #093598;*/
+    color: #005999;
+    padding: 5px 0px 5px 0px;
+    font-weight: bold;
+}
+#studentHome .student-prof-name {
     text-align: center;
     font-style: italic;
     font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
-    color: #093598;
-    border-bottom: 1px solid #ececec;
-    padding: 5px 0px 10px 0px;
-    font-weight: bold;
-}
-
-#seminarHome .seminar-dateloc{
-    padding: 15px 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    font-size: max(14px,1.25em);
+    /*color: #093598;*/
+    color: #f77e7e;;
+    padding: 0px 0px 10px 0px;
     border-bottom: 1px solid #ececec;
 }
 
-#seminarHome .seminar-dateloc-child{
-    padding: 5px 0px;
+#studentHome .student-acad-interests{
+    padding: 15px 0px 5px 0px;
     /*color: #006544;*/
-    color: #00631e;
-    font-family: Lora,Georgia,Cambria,Times,"Times New Roman",Serif;
+    color: #33aaff;
+    font-family: "Open Sans",Cambria,Times,"Times New Roman",Serif;
+    font-size: max(14px,1.3em);
+    line-height: 1.6;
+    text-align: justify;
 }
 
-#seminarHome .seminar-abstract {
+#studentHome .student-hobbies{
+    padding: 15px 0px 5px 0px;
+    /*color: #006544;*/
+    color: #4eca91;
+    font-family: "Open Sans",Cambria,Times,"Times New Roman",Serif;
+    font-size: max(14px,1.3em);
+    line-height: 1.6;
+    text-align: justify;
+}
+
+#studentHome .student-writeup {
     font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
     padding: 15px 0px;
     text-align: justify;
     line-height: 1.6;
-
+    font-size: max(12px,1em);
 }
 
-
-#seminarHome .seminar-notes {
-    margin-top: 25px;
-    padding-top: 10px;
-    border-top: 1px solid #ececec;
-    font-weight: 500;
-    font-size: max(11px, 0.9em);
-    color: #a2a2a2;
-    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
-}
-#seminarHome .seminar-paper {
-    padding-top: 5px;
-    font-weight: 500;
-    font-size: max(11px, 0.9em);
-    font-style: italic;
-    color: #a2a2a2;
-    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
-}
-#seminarHome .seminar-recording {
-    padding-top: 5px;
-    font-weight: 500;
-    font-size: max(11px, 0.9em);
-    font-style: italic;
-    color: #a2a2a2;
-    font-family: "Open Sans", Georgia, Cambria, "Times New Roman", Times, serif;
-}
