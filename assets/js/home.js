@@ -85,7 +85,7 @@ function clickHome(){
     loadHome(contentUrl);
 }
 
-function clickStudent(talkTitle, talkUrl){
+function clickStudent(studentTitle, studentUrl){
 
     let contentUrl;
     const indexOfIndex = window.location.pathname.indexOf("index.html");
@@ -95,8 +95,8 @@ function clickStudent(talkTitle, talkUrl){
         contentUrl = window.location.origin + window.location.pathname.substr(0,indexOfIndex) + 'content/'
     }
 
-    const Studentstate = {"title":talkTitle,"url":talkUrl,"contentUrl":contentUrl};
-    history.pushState(Studentstate, talkTitle, talkUrl);
+    const Studentstate = {"title":studentTitle,"url":studentUrl,"contentUrl":contentUrl};
+    history.pushState(Studentstate, studentTitle, studentUrl);
     loadHome(contentUrl);
 }
 
@@ -130,7 +130,6 @@ function getSearchString(){return window.location.search;}
 function generateStudentHTML(studentHTTP,studentName){
     const studentContents = studentHTTP.responseText;
     student = parseContents(studentContents);
-    console.log("student = ",student);
     const studentHome = document.createElement("div");
     studentHome.id = "studentHome";
     studentHome.className = "home-text";

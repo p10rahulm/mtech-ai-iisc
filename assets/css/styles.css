@@ -336,24 +336,6 @@ a:hover {
 }
 
 
-.mainer #Publications .publication-title{
-    font-weight: bold;
-}
-.mainer #Publications .publication-title a{
-    color: #005999;
-}
-.mainer #Publications .publication-authors{
-    color: #f77e7e;
-    font-weight: bold;
-}
-.mainer #Publications .publication-authors a{
-    /*color: #ff8888;*/
-    color: #f77e7e;
-}
-.mainer #Publications .publication-location{
-    font-style: italic;
-}
-
 .footer {
     grid-area: footer;
     border-top: 1px solid #eceefb;
@@ -372,7 +354,7 @@ a:hover {
     text-align: center;
 }
 
-/*Seminar*/
+/*Student*/
 #studentHome {
     margin: 25px 0px;
     display: flex;
